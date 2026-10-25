@@ -7,6 +7,7 @@
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-Java_26.3-c0392b?style=for-the-badge&logo=minecraft&logoColor=white)](#)
 [![Pack Format](https://img.shields.io/badge/Pack_Format-121-e67e22?style=for-the-badge)](#)
+[![Vibe Code](https://img.shields.io/badge/Project-100%25_Vibe_Coded_%E2%9C%A8-8e44ad?style=for-the-badge)](#)
 [![Side](https://img.shields.io/badge/Side-Server_%26_Singleplayer-27ae60?style=for-the-badge)](#)
 [![Author](https://img.shields.io/badge/Architect-@teamthee-00d2d3?style=for-the-badge)](https://github.com/theesirichai)
 
@@ -14,14 +15,34 @@
 
 ---
 
+> [!IMPORTANT]
+> ### ✨ VIBE CODE PROJECT // โปรเจกต์นี้สร้างด้วยแนวคิด Vibe Coding 100%
+> **OVERDOSE Data Pack Suite** เป็นโปรเจกต์ที่พัฒนาขึ้นด้วยกระบวนการ **Vibe Coding** เต็มรูปแบบ — คือการขับเคลื่อนด้วย **ไอเดีย การออกแบบประสบการณ์ผู้เล่น (Game UX) และการกำกับทิศทางระบบ (Prompt Engineering & System Direction)** โดย **[@teamthee](https://github.com/theesirichai)** ร่วมกับ AI Agent ในการสังเคราะห์โครงสร้างไฟล์ `.mcfunction`, ระบบ Scoreboard State Machine, อัลกอริทึม Raycast 3 มิติ และ Data Component Item Modifiers ของ Minecraft 26.3 ออกมาเป็นโค้ดที่พร้อมใช้งานจริงโดยไม่ต้องแตะ Mod แม้แต่ตัวเดียว
+
+---
+
 ## 🧭 Overview // ภาพรวมโปรเจกต์
 
-**OVERDOSE** คือชุด Data Pack สาย **Vanilla+** ที่ออกแบบมาเพื่อยกระดับประสบการณ์การเล่น Minecraft Java Edition 26.3 โดยยึดหลักการ **"ไม่รกหน้าจอ ไม่ทำลายสมดุลเกม และไม่ต้องลงม็อดหรือรีซอร์สแพ็กเสริม"** ควบคุมทุกอย่างผ่านระบบ Gesture ในเกม (การขยับตัว/กด Shift) และ Interactive UI บนช่องแชท
+**OVERDOSE** คือชุด Data Pack สาย **Vanilla+** ที่ออกแบบมาเพื่อยกระดับประสบการณ์การเล่น **Minecraft: Java Edition 26.3 (*Wilderness Bound*)** โดยยึดหลักการ **"ไม่รกหน้าจอ ไม่ทำลายสมดุลเกม และไม่ต้องลงม็อดหรือรีซอร์สแพ็กเสริม"** ควบคุมทุกอย่างผ่านระบบ Gesture ในเกม (การขยับตัว/ก้มหน้า/กด Shift) และ Interactive UI บนช่องแชท
 
 | โมดูล (Folder) | ชื่อระบบ | หน้าที่หลัก | วิธีเรียกใช้งาน |
 | :--- | :--- | :--- | :--- |
 | 📁 **[`overdose`](./overdose)** | **Overdose: Tree Feller** | ระบบโค่นต้นไม้ทั้งต้นในครั้งเดียว (กวาดพื้นที่ `9×9×37` บล็อก) พร้อมระบบชาร์จพลังงานกันลั่น | ถือขวาน + ย่อ `Shift` ย้ำๆ ให้เต็ม `100%` แล้วตัดไม้หรือคลิกขวา |
 | 📁 **[`overdose-armor`](./overdose-armor)** | **Overdose: Invisible Armor** | ซ่อนโมเดล 3D ชุดเกราะบนตัวละครเพื่อโชว์สกิน 100% โดยค่าพลังป้องกันและ Enchant อยู่ครบ | ก้มมองพื้นสุด + กด `Shift` 2 ครั้ง หรือพิมพ์ `/trigger od_armor_menu` |
+
+---
+
+## 🧠 Vibe Code Engineering Breakdown // เจาะลึกรายละเอียดการออกแบบและเทคนิคเบื้องหลัง
+
+เบื้องหลังการทำ **Vibe Coding** ของโปรเจกต์นี้ ไม่ได้เป็นเพียงการสั่งให้เจนคำสั่งพื้นฐาน แต่เป็นการออกแบบโจทย์แก้ปัญหาข้อจำกัดของ Vanilla Minecraft ให้เนียนเหมือนลง Mod:
+
+| โจทย์การออกแบบ (Design Prompt & Vibe) | โซลูชันทางเทคนิคที่สังเคราะห์ออกมา (Vanilla Technical Execution) |
+| :--- | :--- |
+| **1. "อยากได้ระบบตัดไม้ที่ต้องตั้งใจชาร์จก่อน เพื่อไม่ให้เผลอทุบบ้านไม้ตัวเองพัง"** | สร้างระบบ **Edge-Triggered Sneak Detector** (`sneak_detect.mcfunction`) ตรวจจับจังหวะกด-ปล่อยปุ่ม `Shift` ขณะถือขวาน (`#minecraft:axes`) เพิ่มค่า `overdose.charge` ทีละ 20% จนครบ 100% และรีเซ็ตเป็น 0 ทันทีเมื่อสลับไปถือไอเทมอื่น |
+| **2. "อยากให้โค่นต้นไม้ได้ทั้งโหมด Survival และ Creative รวมถึงต้นไม้ใหญ่ที่มีกิ่งซ่อนในใบไม้"** | ผสาน 2 ระบบตรวจจับ: **Mining Scoreboard** (ตรวจจับการขุดไม้ 20 ชนิดใน Survival) + **Right-Click Axe Raycast** (ยิงลำแสงจากระดับสายตาผู้เล่นทีละ `0.5` บล็อกเพื่อหาพิกัดต้นไม้เมื่อคลิกขวาด้วยขวาน) แล้วรันอัลกอริทึม **9×9×37 Wave-Based Canopy Scan** ไต่ระดับความสูง 37 ชั้นเพื่อเก็บกิ่งก้านบนยอดไม้จนเกลี้ยง |
+| **3. "อยากซ่อนชุดเกราะโชว์สกินตัวเองแบบ 100% Vanilla โดยไม่ใช้ Resource Pack และไอคอนในกระเป๋าต้องไม่หาย"** | ใช้ฟีเจอร์ใหม่ของระบบ **Item Data Components (`minecraft:equippable`)** ผ่านไฟล์ `item_modifier` โดยเปลี่ยนเฉพาะ `asset_id` ของโมเดลที่สวมใส่ให้เป็น `overdose_armor:invisible` (ซึ่งไม่มีเท็กซ์เจอร์ 3D บนตัวละคร) ส่งผลให้ **โมเดลเกราะบนตัวหายไป แต่ไอคอนในช่องสวมใส่ ค่าพลังป้องกัน Enchantment และ Armor Trim ยังอยู่ครบ 100%** |
+| **4. "ไม่อยากพิมพ์คำสั่งเวลาเล่น อยากกดสลับซ่อน/โชว์เกราะด้วยท่าทางในเกมได้เลย"** | ออกแบบระบบ **Gesture Shortcut** (`gesture_check.mcfunction`) ตรวจสอบมุมก้มเงยของกล้องผู้เล่น (`x_rotation=75..90` คือมองพื้นสุดที่เท้าตัวเอง) ร่วมกับตัวนับจังหวะกด `Shift` 2 ครั้งติดกันภายใน 15 Tick (หรือ `Shift + กระโดด`) เพื่อสลับสถานะเกราะพร้อมเสียง Chime และละออง Particle |
+| **5. "ถ้าถอดเกราะออกหรือโยนให้เพื่อน เกราะต้องกลับมามองเห็นได้ตามปกติ ไม่บั๊กติดสถานะล่องหน"** | สร้างระบบ **Smart Auto-Restore** (`restore/hotbar`, `inventory`, `offhand`, `dropped`) สแกนหาไอเทมที่มีแท็ก `od_hidden:1b` นอกช่องสวมใส่ทุกๆ Tick และคืนค่า `asset_id` ดั้งเดิมของวัสดุเกราะแต่ละชนิด (รวมถึง **Copper Armor** และ **Elytra**) กลับคืนให้อัตโนมัติ |
 
 ---
 
@@ -31,20 +52,22 @@
 
 ระบบตัดไม้แบบลูกโซ่ที่ออกแบบมาให้มี **Safety Charge Lock** ป้องกันการเผลอพังบ้านไม้ตัวเองโดยไม่ตั้งใจ จะทำงานเฉพาะตอนที่คุณตั้งใจชาร์จพลังจนเต็ม 100% เท่านั้น
 
-### ✨ จุดเด่น (Key Features)
+### ✨ จุดเด่นและรายละเอียดระบบ (Features & Mechanics)
 
 - **🎯 Context-Aware HUD (แสดงผลเฉพาะตอนถือขวาน):**
-  - เมื่อถือขวานในมือหลักหรือมือรอง จะแสดงสถานะที่ Actionbar ทันที
-  - เมื่อสลับไปถือไอเทมอื่น หลอดพลังงานและข้อความจะซ่อนตัวเองอัตโนมัติ ไม่เกะกะสายตา
+  - ตรวจสอบไอเทมในมือหลัก (`weapon.mainhand`) และมือรอง (`weapon.offhand`) ด้วยแท็ก `#minecraft:axes`
+  - เมื่อถือขวาน จะแสดงข้อความที่ Actionbar ว่า `[Overdose] 🪓 Shift to activate`
+  - เมื่อสลับไปถือไอเทมอื่น หลอดพลังงานและข้อความจะซ่อนตัวเองอัตโนมัติ และรีเซ็ตค่าชาร์จทันที
 - **⚡ Shift-to-Charge Mechanic (ระบบชาร์จพลังงาน 5 จังหวะ):**
-  - กดปุ่ม `Shift` (ย่อตัว) ย้ำๆ ขณะถือขวาน หลอดพลังงานจะเพิ่มขึ้นครั้งละ **+20%**
-  - เมื่อครบ **100%** จะเข้าสู่โหมด **`ACTIVE`** พร้อมเสียงเอฟเฟกต์และประกายไฟรอบตัว
+  - กดปุ่ม `Shift` (ย่อตัว) ย้ำๆ 5 ครั้ง ขณะถือขวาน หลอดพลังงานจะเพิ่มขึ้นครั้งละ **+20%**
+  - เมื่อครบ **100%** จะเข้าสู่โหมด **`ACTIVE`** พร้อมเสียง `block.beacon.activate`, `entity.experience_orb.pickup` และพาร์ติเคิลประกายไฟ
 - **🔥 Dual Execution Modes (รองรับการโค่นไม้ 2 รูปแบบ):**
-  1. **Left-Click Break (ขุดทำลายท่อนไม้):** ตัดไม้ท่อนใดก็ได้ ต้นไม้ทั้งต้นจะพังทลายลงมาทันที *(Survival Mode)*
-  2. **Right-Click Raycast (คลิกขวาด้วยขวาน):** เล็งที่ท่อนไม้แล้วคลิกขวาเพื่อโค่นต้นไม้ทันที ใช้ได้ทั้ง **Survival** และ **Creative Mode**!
-- **🌲 9×9×37 Canopy Sweep:**
-  - อัลกอริทึมไล่ระดับความสูงและสแกนกิ่งก้านในรัศมี **9×9 บล็อก สูงสุด 37 ชั้น** เก็บงานครบตั้งแต่โคนต้นยันกิ่งไม้ที่ซ่อนอยู่ในพุ่มใบไม้
-  - รองรับไม้ทุกชนิดใน **Java 26.3**: `Oak`, `Spruce`, `Birch`, `Jungle`, `Acacia`, `Dark Oak`, `Mangrove`, `Cherry`, `Poplar`, `Crimson Stem`, และ `Warped Stem`
+  1. **Left-Click Break (ขุดทำลายท่อนไม้):** ตัดไม้ท่อนใดก็ได้ ต้นไม้ทั้งต้นจะพังทลายลงมาเป็นไอเทมทันที *(สำหรับโหมด Survival)*
+  2. **Right-Click Raycast (คลิกขวาด้วยขวาน):** เล็งเป้าไปที่ท่อนไม้ในระยะแล้วคลิกขวาเพื่อสั่งโค่นต้นไม้ทันที *(ใช้ได้ทั้งโหมด **Survival** และ **Creative**!)*
+- **🌲 9×9×37 Canopy Sweep & Supported Woods:**
+  - สแกนพื้นที่รอบแกนลำต้นขนาด **9×9 บล็อก** และไต่ระดับความสูงขึ้นไปสูงสุด **37 บล็อก** เพื่อทำลายทั้งลำต้นหลักและกิ่งไม้ที่ซ่อนอยู่ในพุ่มใบไม้
+  - **รองรับไม้และลำต้นทุกชนิดใน Java 26.3:** `Oak`, `Spruce`, `Birch`, `Jungle`, `Acacia`, `Dark Oak`, `Mangrove`, `Cherry`, `Poplar`, `Crimson Stem`, และ `Warped Stem` (รวมถึงบล็อกประเภท `_wood` เปลือกไม้รอบด้าน)
+  - **รองรับขวานทุกประเภท:** `Wooden`, `Stone`, `Iron`, `Golden`, `Copper`, `Diamond`, และ `Netherite Axe`
 
 ### 🖥️ In-Game Actionbar Preview
 
@@ -60,22 +83,22 @@
 
 > **"โชว์สกินสุดเท่ได้เต็ม 100% โดยไม่ต้องถอดเกราะทิ้ง"**
 
-ใช้ความสามารถของระบบ **Item Data Components (`minecraft:equippable`)** ยุคใหม่ในการซ่อนเฉพาะโมเดล 3D ของชุดเกราะที่สวมอยู่บนตัวผู้เล่น โดย**ไม่ต้องใช้ Resource Pack** และผู้เล่นทุกคนในเซิร์ฟเวอร์จะมองเห็นสกินของคุณตรงกันทั้งหมด
+ซ่อนเฉพาะโมเดล 3D ของชุดเกราะที่สวมอยู่บนตัวผู้เล่นด้วยระบบ Data Component แท้ของตัวเกม **ไม่ต้องใช้ Resource Pack** และผู้เล่นทุกคนในเซิร์ฟเวอร์จะมองเห็นสกินของคุณตรงกันทั้งหมด
 
-### ✨ จุดเด่น (Key Features)
+### ✨ จุดเด่นและรายละเอียดระบบ (Features & Mechanics)
 
 - **💎 100% Stats Preserved (เกราะล่องหนแต่พลังป้องกันอยู่ครบ):**
   - ค่าพลังป้องกัน (`Armor` / `Armor Toughness`), `Knockback Resistance`, `Enchantments`, `Armor Trims`, สีชุดหนังย้อมสี, ชื่อไอเทม และความทนทาน (`Durability`) ทำงานปกติ 100%
-  - **ไอคอนในกระเป๋าไม่หาย:** เวลาเปิดหน้าต่าง Inventory (`E`) คุณยังมองเห็นไอคอนชุดเกราะในช่องสวมใส่ตามปกติ ไม่สับสนว่าใส่อะไรอยู่
-  - รองรับชุดเกราะครบทุกชนิดใน **Java 26.3**: `Leather`, `Copper`, `Chainmail`, `Iron`, `Golden`, `Diamond`, `Netherite`, `Turtle Helmet`, และปีก `Elytra`
+  - **ไอคอนในกระเป๋าไม่หาย:** เวลาเปิดหน้าต่าง Inventory (`E`) คุณยังมองเห็นไอคอนชุดเกราะในช่องสวมใส่ตามปกติ ไม่สับสนว่ากำลังใส่เกราะอะไรอยู่
+  - **รองรับชุดเกราะครบทุกชนิดใน Java 26.3:** `Leather`, `Copper`, `Chainmail`, `Iron`, `Golden`, `Diamond`, `Netherite`, `Turtle Helmet`, และปีก `Elytra`
 - **🤸 In-Game Gesture Shortcut (สลับซ่อน/โชว์เกราะได้โดยไม่ต้องพิมพ์คำสั่ง!):**
-  - **ก้มหน้ามองพื้นสุด (มองที่เท้าตัวเอง)** แล้วกด **`Shift` 2 ครั้งติดกัน** *(หรือกด `Shift ค้าง + กระโดด Spacebar`)*
+  - **ก้มหน้ามองพื้นสุด (มองที่เท้าตัวเอง `Pitch 75°–90°`)** แล้วกด **`Shift` 2 ครั้งติดกัน** *(หรือกด `Shift ค้าง + กระโดด Spacebar`)*
   - กดครั้งแรกจะมีข้อความบอกสถานะบน Actionbar และเมื่อกดซ้ำจะสลับ **ซ่อนเกราะทั้งหมด (`HIDDEN`)** ⇄ **แสดงเกราะทั้งหมด (`VISIBLE`)** ทันทีพร้อมเสียง Chime และละออง Particle!
 - **🎛️ Per-Slot Interactive Chat Menu (เลือกซ่อนแยกชิ้นได้อย่างอิสระ):**
   - พิมพ์ `/trigger od_armor_menu` เพื่อเปิดแผงควบคุมแบบคลิกเมาส์ได้บนแชท (ผู้เล่นทั่วไปใช้ได้ทันที ไม่ต้องมีสิทธิ์ OP)
   - เลือกซ่อนเฉพาะหมวกเพื่อโชว์หัวสกิน หรือซ่อนเกราะอกแต่โชว์รองเท้าได้ตามใจชอบ
 - **♻️ Smart Auto-Restore (คืนค่าโมเดลอัตโนมัติเมื่อถอดเกราะ):**
-  - ทันทีที่ถอดชุดเกราะมาไว้ในกระเป๋า (`Inventory` / `Hotbar` / `Offhand`) หรือโยนลงพื้น ระบบจะคืนค่าโมเดล 3D กลับเป็นปกติให้อัตโนมัติ สามารถนำไปตั้งโชว์บน Armor Stand หรือส่งต่อให้เพื่อนได้โดยไม่บั๊ก
+  - ทันทีที่ถอดชุดเกราะมาไว้ในกระเป๋า (`Inventory slots 9–35` / `Hotbar slots 0–8` / `Offhand`) หรือโยนลงพื้นเป็นไอเทม (`@e[type=item]`) ระบบจะคืนค่าโมเดล 3D กลับเป็นปกติให้อัตโนมัติ สามารถนำไปตั้งโชว์บน Armor Stand หรือส่งต่อให้เพื่อนได้โดยไม่บั๊ก
 
 ### 🖥️ Interactive Chat UI Preview (`/trigger od_armor_menu`)
 
@@ -117,37 +140,45 @@ Minecraft Java Edition 26.3 • by teamthee
 
 ```text
 overdose-datapack/
-├── README.md                          # เอกสารภาพรวมและคู่มือหลักของโปรเจกต์
+├── README.md                          # เอกสารภาพรวมและเบื้องหลังโปรเจกต์ Vibe Code
 ├── overdose/                          # 🪓 Data Pack #1: Overdose Tree Feller
 │   ├── pack.mcmeta                    # Pack Format 121 (MC Java 26.3)
-│   ├── README.md                      # คู่มือเฉพาะของโมดูล Tree Feller
+│   ├── README.md                      # คู่มือและรายละเอียดเทคนิคของโมดูล Tree Feller
 │   └── data/
-│       ├── minecraft/tags/function/   # load.json & tick.json hooks
+│       ├── minecraft/tags/function/   # load.json & tick.json hooks (20Hz loop)
 │       └── overdose/
-│           ├── advancement/           # ตรวจจับเหตุการณ์การตัดไม้
-│           └── function/              # ระบบชาร์จ Shift, Raycast, และ Recursive 9x9x37 Feller
+│           ├── advancement/           # mine_log.json advancement trigger
+│           └── function/              # 25 .mcfunction files (Shift charge, Raycast, 9x9x37 Feller)
 └── overdose-armor/                    # 🛡️ Data Pack #2: Overdose Invisible Armor
     ├── pack.mcmeta                    # Pack Format 121 (MC Java 26.3)
     ├── pack.png                       # ไอคอนประจำตัว Data Pack
-    ├── README.md                      # คู่มือเฉพาะของโมดูล Invisible Armor
+    ├── README.md                      # คู่มือและรายละเอียดเทคนิคของโมดูล Invisible Armor
     └── data/
-        ├── minecraft/tags/function/   # load.json & tick.json hooks
+        ├── minecraft/tags/function/   # load.json & tick.json hooks (20Hz loop)
         └── overdose_armor/
             ├── tags/item/             # แท็กแยกประเภทชุดเกราะแต่ละชิ้น (รวมชุดเกราะทองแดง Copper)
-            ├── item_modifier/         # ตัวจัดการ Equippable Component (Hide & Restore)
+            ├── item_modifier/         # 5 Item Modifiers จัดการ Equippable Component (Hide & Restore)
             └── function/
-                ├── player/            # ตรวจจับ Gesture ก้มหน้า+Shift และอัปเดตสถานะเกราะ
-                ├── restore/           # คืนค่าเกราะอัตโนมัติเมื่อถอดเก็บหรือโยนทิ้ง
-                └── trigger/           # ระบบคำสั่ง /trigger และ Interactive Chat Menu
+                ├── player/            # ตรวจจับ Gesture ก้มหน้า+Shift และอัปเดตสถานะเกราะรายชิ้น
+                ├── restore/           # คืนค่าเกราะอัตโนมัติเมื่อถอดเก็บ (Hotbar/Inventory/Offhand) หรือโยนทิ้ง
+                └── trigger/           # ระบบคำสั่ง /trigger ทั้ง 11 ไฟล์ และ Interactive Chat Menu
 ```
 
 ---
 
 ## 🚀 วิธีติดตั้ง (Installation Guide)
 
-คุณสามารถเลือกติดตั้งเฉพาะตัวที่ต้องการ หรือติดตั้งทั้ง **2 โฟลเดอร์** พร้อมกันได้เลย (ทำงานร่วมกันได้ 100% ไม่ชนกัน):
+คุณสามารถเลือกดาวน์โหลดไฟล์ `.zip` จากหน้า **[Releases](https://github.com/theesirichai/overdose-datapack/releases/tag/v1.0.0)** ไปวางในโฟลเดอร์ `datapacks` ได้ทันที หรือจะ Clone จาก Repository นี้โดยตรงก็ได้เช่นกัน:
 
-1. ดาวน์โหลดหรือ Clone Repository นี้ลงเครื่อง:
+### วิธีที่ 1: ติดตั้งผ่านไฟล์ Release `.zip` (แนะนำ — ไม่ต้องแตกไฟล์)
+1. ดาวน์โหลดไฟล์จากหน้า **[Release v1.0.0](https://github.com/theesirichai/overdose-datapack/releases/tag/v1.0.0)**:
+   - `overdose-tree-feller-v1.0.0-mc26.3.zip`
+   - `overdose-invisible-armor-v1.0.0-mc26.3.zip`
+2. นำไฟล์ `.zip` ไปวางในโฟลเดอร์ `.minecraft/saves/<ชื่อโลกของคุณ>/datapacks/` ได้เลยโดยไม่ต้องแตกไฟล์
+3. เข้าเกมแล้วพิมพ์คำสั่ง `/reload`
+
+### วิธีที่ 2: ติดตั้งผ่าน Git Clone (สำหรับนักพัฒนา / แก้ไขโค้ดต่อ)
+1. Clone Repository ลงเครื่อง:
    ```bash
    git clone https://github.com/theesirichai/overdose-datapack.git
    ```
@@ -157,19 +188,13 @@ overdose-datapack/
    ├── overdose/
    └── overdose-armor/
    ```
-3. เข้าสู่โลกในเกม แล้วพิมพ์คำสั่ง:
-   ```mcfunction
-   /reload
-   ```
-4. หากติดตั้งสำเร็จ จะมีข้อความต้อนรับปรากฏขึ้นในแชท:
-   - `[Overdose] Tree Feller Data Pack loaded! by teamthee`
-   - `[Overdose] Invisible Armor (Java 26.3) loaded! by teamthee - [Armor Menu]`
+3. เข้าสู่โลกในเกม แล้วพิมพ์คำสั่ง `/reload`
 
 ---
 
 <div align="center">
 
-Crafted with precision by **Thee Dumrongsirichai ([@theesirichai](https://github.com/theesirichai))**  
-`TT // STUDIO — LABS // MINECRAFT DATA PACK DIVISION`
+**✨ 100% Vibe Coded Project** • Directed & Engineered by **Thee Dumrongsirichai ([@theesirichai](https://github.com/theesirichai))**  
+`TT // STUDIO — LABS // MINECRAFT VIBE CODE DIVISION`
 
 </div>

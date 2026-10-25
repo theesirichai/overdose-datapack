@@ -1,24 +1,31 @@
-# Overdose - Invisible Armor Data Pack (Java Edition 26.3)
-**Author:** teamthee  
-**Minecraft Version:** Java Edition 26.3  
-**Data Pack Format:** 121 (`min_format: 121`, `max_format: 121`)  
+# 🛡️ Overdose — 100% Vanilla Invisible Armor Data Pack (Java Edition 26.3)
+
+**Author / Vibe Director:** `teamthee` ([@theesirichai](https://github.com/theesirichai))  
+**Project Type:** ✨ **100% Vibe Coded Project** (Human Game UX Direction × AI Agentic Engineering)  
+**Minecraft Version:** Java Edition 26.3 (*Wilderness Bound* • `pack_format: 121`)  
 **Folder:** `overdose-armor`
 
 ---
 
-## 🛡 คุณสมบัติเด่น (Features)
+## ✨ เกี่ยวกับโปรเจกต์ (Vibe Code Overview)
 
-1. **ซ่อนชุดเกราะโดยไม่เสียพลังป้องกัน (100% Vanilla Invisible Armor):**
-   - ซ่อนโมเดล 3D ของชุดเกราะที่สวมใส่อยู่บนตัวละคร เพื่อให้เห็นสกิน (Skin) ของผู้เล่นได้อย่างเต็มที่ โดยไม่ต้องลง Resource Pack หรือ Mod ฝั่งผู้เล่น
-   - **ค่าพลังป้องกัน (Armor / Toughness), Enchantments, Armor Trims, สีชุดหนังย้อมสี, ชื่อไอเทม และความทนทาน (Durability) ยังคงทำงานครบ 100%**
-   - ไอคอนชุดเกราะในช่องสวมใส่เวลาเปิดกระเป๋า (`E`) ยังคงมองเห็นได้ตามปกติ ทำให้รู้ว่ากำลังใส่เกราะอะไรอยู่
-   - รองรับชุดเกราะทุกชนิดใน Minecraft 26.3: **Leather, Copper, Chainmail, Iron, Golden, Diamond, Netherite, Turtle Helmet และปีก Elytra**
+**Overdose: Invisible Armor** เป็นโมดูล Data Pack ที่พัฒนาขึ้นด้วยแนวคิด **Vibe Coding** เพื่อตอบโจทย์ผู้เล่นที่ต้องการโชว์สกินตัวละครแบบเต็ม 100% โดยไม่เสียค่าพลังป้องกันของชุดเกราะ และไม่ต้องบังคับให้คนในเซิร์ฟเวอร์ลง Mod หรือ Resource Pack เสริม ระบบนี้ใช้ฟีเจอร์ **Item Data Components (`minecraft:equippable`)** ของตัวเกมในการซ่อนเฉพาะโมเดล 3D บนตัวผู้เล่น พร้อมระบบคีย์ลัดท่าทางในเกม (ก้มมองพื้น + กด `Shift` 2 ครั้ง) และระบบคืนค่าเกราะอัตโนมัติเมื่อถอดเก็บ
 
-2. **วิธีเปิด-ปิดที่คิดมาให้ครบทั้งแบบกดในเกม (In-Game Shortcut) และเมนูคลิกในแชท (Interactive Menu):**
-   - **วิธีที่ 1: คีย์ลัดในเกม (ไม่ต้องพิมพ์คำสั่ง!)**
-     - **ก้มหน้ามองพื้นสุด (มองที่เท้าตัวเอง)** แล้วกด **ย่อ (`Shift`) 2 ครั้งติดกัน** (หรือกด **`Shift` ค้าง + กระโดด `Spacebar`**)
-     - เมื่อก้มหน้าแล้วกด `Shift` ครั้งแรก จะมีแถบแจ้งเตือนขึ้นบน Actionbar บอกสถานะปัจจุบัน และพอกดซ้ำจะสลับ **ซ่อนเกราะทั้งหมด (HIDDEN)** <-> **แสดงเกราะทั้งหมด (VISIBLE)** ทันที พร้อมเสียง Chime และละออง Particle!
-   - **วิธีที่ 2: เมนูตั้งค่าแบบคลิกได้ในแชท (แยกชิ้นส่วนได้!)**
+---
+
+## 🛡️ คุณสมบัติและรายละเอียดระบบ (Features & Mechanics)
+
+1. **ซ่อนชุดเกราะโดยไม่เสียพลังป้องกัน (100% Vanilla Data Component Invisible Armor):**
+   - ใช้ `item_modifier` ปรับค่า `asset_id` ในคอมโพเนนต์ `minecraft:equippable` ให้เป็น `overdose_armor:invisible` เพื่อซ่อนเฉพาะโมเดล 3D ของชุดเกราะที่สวมใส่อยู่บนตัวละคร
+   - **ค่าพลังป้องกัน (`Armor` / `Toughness`), `Knockback Resistance`, `Enchantments`, `Armor Trims`, สีชุดหนังย้อมสี, ชื่อไอเทม และความทนทาน (`Durability`) ยังคงทำงานครบ 100%**
+   - ไอคอนชุดเกราะในช่องสวมใส่เวลาเปิดกระเป๋า (`E`) ยังคงมองเห็นได้ตามปกติ ทำให้รู้ตลอดเวลาว่ากำลังใส่เกราะอะไรอยู่
+   - รองรับชุดเกราะทุกชนิดใน **Minecraft 26.3**: **Leather, Copper, Chainmail, Iron, Golden, Diamond, Netherite, Turtle Helmet และปีก Elytra**
+
+2. **ควบคุมได้ 2 รูปแบบ ทั้งคีย์ลัดท่าทางในเกม (In-Game Gesture) และเมนูแชท (Interactive Menu):**
+   - **วิธีที่ 1: คีย์ลัดท่าทางในเกม (ไม่ต้องพิมพ์คำสั่ง!)**
+     - **ก้มหน้ามองพื้นสุด (มองที่เท้าตัวเอง มุมก้ม `75°–90°`)** แล้วกด **ย่อ (`Shift`) 2 ครั้งติดกันภายใน 15 Tick** *(หรือกด `Shift ค้าง + กระโดด Spacebar`)*
+     - เมื่อก้มหน้าแล้วกด `Shift` ครั้งแรก จะมีแถบแจ้งเตือนขึ้นบน Actionbar บอกสถานะปัจจุบัน และพอกดซ้ำจะสลับ **ซ่อนเกราะทั้งหมด (`HIDDEN`)** ⇄ **แสดงเกราะทั้งหมด (`VISIBLE`)** ทันที พร้อมเสียง Chime และละออง Particle!
+   - **วิธีที่ 2: เมนูตั้งค่าแบบคลิกได้ในแชท (แยกชิ้นส่วนได้อิสระ ไม่ต้องใช้สิทธิ์ OP)**
      - พิมพ์ `/trigger od_armor_menu` เพื่อเปิดหน้าต่างควบคุมแบบคลิกเมาส์ได้ทันที:
        - สลับซ่อน/แสดงเกราะทั้งหมดในคลิกเดียว (`/trigger od_armor`)
        - **เลือกซ่อนหรือแสดงแยกทีละชิ้นได้อิสระ:**
@@ -29,18 +36,18 @@
        - เปิด/ปิด คีย์ลัดก้มหน้ากด Shift (`/trigger od_armor_gest`)
        - เปิด/ปิด เสียงและพาร์ติเคิลเอฟเฟกต์ (`/trigger od_armor_sfx`)
 
-3. **Auto-Restore เมื่อถอดชุดเกราะ:**
-   - เมื่อถอดชุดเกราะออกจากตัวมาเก็บไว้ในกระเป๋า (Inventory / Hotbar / Offhand) หรือโยนลงพื้น ระบบจะคืนค่าโมเดลชุดเกราะให้กลับมาแสดงผลปกติโดยอัตโนมัติ (สามารถนำไปวางโชว์บน Armor Stand หรือให้เพื่อนต่อได้โดยไม่บั๊ก)
+3. **Smart Auto-Restore เมื่อถอดชุดเกราะ:**
+   - เมื่อถอดชุดเกราะออกจากตัวมาเก็บไว้ในกระเป๋า (`Inventory` / `Hotbar` / `Offhand`) หรือโยนลงพื้น (`@e[type=item]`) ระบบจะตรวจจับแท็ก `od_hidden:1b` และคืนค่า `asset_id` ดั้งเดิมของวัสดุเกราะแต่ละชนิดให้กลับมาแสดงผล 3D ปกติโดยอัตโนมัติ (สามารถนำไปวางโชว์บน Armor Stand หรือให้เพื่อนต่อได้โดยไม่บั๊ก)
 
 ---
 
-## 📦 โครงสร้างไฟล์ (File Structure)
+## 📦 โครงสร้างไฟล์ (Technical File Structure)
 
-```
+```text
 overdose-armor/
-├── pack.mcmeta                # ข้อมูลแพ็กเกจ (Format 121, MC 26.3)
+├── pack.mcmeta                # ข้อมูลแพ็กเกจ (Format 121, MC Java 26.3)
 ├── pack.png                   # ไอคอนภาพประจำตัว Data Pack
-├── README.md                  # คู่มือการใช้งานภาษาไทย
+├── README.md                  # คู่มือและรายละเอียดเทคนิคของโมดูล
 └── data/
     ├── minecraft/
     │   └── tags/function/
