@@ -1,0 +1,131 @@
+{
+  "type": "minecraft:sequence",
+  "functions": [
+    {
+      "type": "minecraft:set_custom_data",
+      "tag": "{od_hidden_armor:1b}"
+    },
+    {
+      "type": "minecraft:set_components",
+      "components": {
+        "minecraft:equippable": {
+          "slot": "head",
+          "asset_id": "overdose_armor:invisible",
+          "equip_sound": "minecraft:item.armor.equip_generic"
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:leather_helmet" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "head",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_leather"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "#overdose_armor:copper_head" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "head",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_copper"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:chainmail_helmet" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "head",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_chain"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:iron_helmet" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "head",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_iron"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:golden_helmet" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "head",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_gold"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:diamond_helmet" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "head",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_diamond"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:netherite_helmet" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "head",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_netherite"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:turtle_helmet" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "head",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_turtle"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "values": [
+    "#minecraft:chest_armor",
+    "minecraft:leather_chestplate",
+    "minecraft:chainmail_chestplate",
+    "minecraft:iron_chestplate",
+    "minecraft:golden_chestplate",
+    "minecraft:diamond_chestplate",
+    "minecraft:netherite_chestplate",
+    "minecraft:elytra",
+    {
+      "id": "minecraft:copper_chestplate",
+      "required": false
+    }
+  ]
+}

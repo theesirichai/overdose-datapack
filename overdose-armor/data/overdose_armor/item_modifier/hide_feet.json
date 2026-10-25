@@ -1,0 +1,117 @@
+{
+  "type": "minecraft:sequence",
+  "functions": [
+    {
+      "type": "minecraft:set_custom_data",
+      "tag": "{od_hidden_armor:1b}"
+    },
+    {
+      "type": "minecraft:set_components",
+      "components": {
+        "minecraft:equippable": {
+          "slot": "feet",
+          "asset_id": "overdose_armor:invisible",
+          "equip_sound": "minecraft:item.armor.equip_generic"
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:leather_boots" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "feet",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_leather"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "#overdose_armor:copper_feet" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "feet",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_copper"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:chainmail_boots" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "feet",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_chain"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:iron_boots" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "feet",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_iron"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:golden_boots" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "feet",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_gold"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:diamond_boots" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "feet",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_diamond"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:netherite_boots" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "feet",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_netherite"
+          }
+        }
+      }
+    }
+  ]
+}

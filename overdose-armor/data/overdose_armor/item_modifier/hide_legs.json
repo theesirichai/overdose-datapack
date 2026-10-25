@@ -1,0 +1,117 @@
+{
+  "type": "minecraft:sequence",
+  "functions": [
+    {
+      "type": "minecraft:set_custom_data",
+      "tag": "{od_hidden_armor:1b}"
+    },
+    {
+      "type": "minecraft:set_components",
+      "components": {
+        "minecraft:equippable": {
+          "slot": "legs",
+          "asset_id": "overdose_armor:invisible",
+          "equip_sound": "minecraft:item.armor.equip_generic"
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:leather_leggings" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "legs",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_leather"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "#overdose_armor:copper_legs" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "legs",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_copper"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:chainmail_leggings" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "legs",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_chain"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:iron_leggings" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "legs",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_iron"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:golden_leggings" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "legs",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_gold"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:diamond_leggings" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "legs",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_diamond"
+          }
+        }
+      }
+    },
+    {
+      "type": "minecraft:filtered",
+      "item_filter": { "items": "minecraft:netherite_leggings" },
+      "on_pass": {
+        "type": "minecraft:set_components",
+        "components": {
+          "minecraft:equippable": {
+            "slot": "legs",
+            "asset_id": "overdose_armor:invisible",
+            "equip_sound": "minecraft:item.armor.equip_netherite"
+          }
+        }
+      }
+    }
+  ]
+}

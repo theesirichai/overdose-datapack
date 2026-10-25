@@ -1,0 +1,11 @@
+# Exclude untracked local modules
+overdose-refill/
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.bak
+*.tmp
+.vscode/
+.idea/
